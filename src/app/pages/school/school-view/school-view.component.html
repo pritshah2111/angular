@@ -1,0 +1,174 @@
+<div class="form-box-section">
+  <form [formGroup]="schoolViewForm">
+    <div class="form-listbox">
+      <div class="form-field">
+        <mat-label>School Name<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="schoolName" placeholder="Enter school name" [disabled]="true" />
+          <mat-error *ngIf="
+              submitted && schoolViewForm.get('schoolName')?.hasError('required')
+            ">
+            School name is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              schoolViewForm.get('schoolName')?.hasError('pattern') &&
+              !schoolViewForm.get('schoolName')?.hasError('required') &&
+              !schoolViewForm.get('schoolName')?.hasError('onlyWhitespace')
+            ">
+            Enter valid school name
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              !schoolViewForm.get('schoolName')?.hasError('required') &&
+              schoolViewForm.get('schoolName')?.hasError('onlyWhitespace')
+            ">
+            No white space allow in school name
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-label>Email Address<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter email address" formControlName="email" appWhiteSpaceRestriction
+            [disabled]="true" />
+          <mat-error *ngIf="submitted && schoolViewForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              schoolViewForm.get('email')?.hasError('pattern') &&
+              !schoolViewForm.get('email')?.hasError('required')
+            ">
+            Enter Valid email
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-label>Address<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter address" formControlName="address" appWhiteSpaceRestriction
+            [disabled]="true" />
+          <mat-error *ngIf="
+              submitted && schoolViewForm.get('address')?.hasError('required')
+            ">
+            Address is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-label>Zip code<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter zip code" formControlName="zipCode" appWhiteSpaceRestriction
+            [disabled]="true" />
+          <mat-error *ngIf="
+              submitted && schoolViewForm.get('zipCode')?.hasError('required')
+            ">
+            Zip code is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              !schoolViewForm.get('zipCode')?.hasError('required') &&
+              schoolViewForm.get('zipCode')?.hasError('pattern')
+            ">
+            Please Enter Valid Zip code
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-label>Country<span class="required">*</span></mat-label>
+        <div class="phone-number-input"
+          [ngClass]="submitted && schoolViewForm.controls['countryId'].errors ? 'error-phone' : ''">
+          <div class="separate-dial-code">
+            <i class="mat-select-arrows"></i>
+            <select class="custom-select" #country name="country" id="country" (change)="onCountryChange($event)"
+              formControlName="countryId" [disabled]="true">
+              <option [disabled]="true" [label]="'-- Select Your Country --'"></option>
+              <option *ngFor="let country of countries" [value]="country.id">
+                {{ country.name }}
+              </option>
+            </select>
+          </div>
+          <mat-error *ngIf="submitted && schoolViewForm.get('countryId')?.hasError('required')">
+            Country is required
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <mat-label>State<span class="required">*</span></mat-label>
+        <div class="phone-number-input"
+          [ngClass]="submitted && schoolViewForm.controls['stateId'].errors ? 'error-phone' : ''">
+          <div class="separate-dial-code">
+            <i class="mat-select-arrows"></i>
+            <select class="custom-select" *ngIf="states" #state name="state" id="state" (change)="onStateChange($event)"
+              formControlName="stateId" [disabled]="true">
+              <option [disabled]="true" [value]="" [label]="'-- Select Your State --'"></option>
+              <option *ngFor="let state of states" [value]="state.id">
+                {{ state.name }}
+              </option>
+            </select>
+          </div>
+          <mat-error *ngIf="submitted && schoolViewForm.get('stateId')?.hasError('required')">
+            State is required
+          </mat-error>
+        </div>
+      </div>
+      <div class="form-field">
+        <mat-label>City<span class="required">*</span></mat-label>
+        <div class="phone-number-input"
+          [ngClass]="submitted && schoolViewForm.controls['cityId'].errors ? 'error-phone' : ''">
+          <div class="separate-dial-code">
+            <i class="mat-select-arrows"></i>
+            <select class="custom-select" *ngIf="cities" #city name="city" id="city" (change)="onCityChange()"
+              formControlName="cityId" [disabled]="true">
+              <option [disabled]="true" [label]="'-- Select Your City --'"></option>
+              <option *ngFor="let city of cities" [value]="city.id">
+                {{ city.name }}
+              </option>
+            </select>
+          </div>
+          <mat-error *ngIf="submitted && schoolViewForm.get('cityId')?.hasError('required')">
+            City is required
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <mat-label>Select Standards<span class="required">*</span></mat-label>
+        <div class="phone-number-input"
+          [ngClass]="submitted && schoolViewForm.controls['stdIds'].errors ? 'error-phone' : ''">
+          <div class="separate-dial-code">
+            <ng-multiselect-dropdown class="multi-dropdown" id="one" placeholder="Select standards"
+              [settings]="settings" [data]="allStdArray" formControlName="stdIds" ([ngModel])="selectedStdIds"
+              [disabled]="true">
+            </ng-multiselect-dropdown>
+
+          </div>
+          <mat-error *ngIf="submitted && schoolViewForm.get('stdIds')?.hasError('required')">
+            Standard is required
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <mat-label>Image<span class="required">*</span></mat-label>
+        <br>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" [disabled]="true" />
+        <mat-error *ngIf="submitted && imageF.invalid">
+          Image is required
+        </mat-error>
+        <img [src]="imagePath+imageF.value" onerror="this.src='../../../../assets/image/error.jpg'" style="width: 50%;"
+          alt="Selected Image" />
+      </div>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="link-btn" [routerLink]="'/schools/edit/' + investorId">
+        Edit
+      </button>
+    </div>
+  </form>
+</div>

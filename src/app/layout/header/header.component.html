@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="header-bar">
+  <div class="header-logo">
+    <a href="/">
+      <img style="height: 53px" src="../../../assets/image/logo.png" alt="logo-img" />
+    </a>
+  </div>
+  <div class="example-button-row">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <span class="profile-name">{{ loginUserDetails?.name }}</span>
+      <button mat-icon-button class="profile-btn" [matMenuTriggerFor]="menu">
+        {{ loginUserDetails?.logoName }}
+      </button>
+    </div>
+
+    <mat-menu #menu="matMenu" class="mat-menu-list">
+
+      <button type="button" routerLink="/change-password" mat-menu-item>
+        <mat-icon class="material-symbols-outlined">lock_outline</mat-icon>
+        <span>Change Password</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon class="material-symbols-outlined">logout</mat-icon>
+        <span>Log out</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

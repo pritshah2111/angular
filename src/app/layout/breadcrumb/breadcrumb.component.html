@@ -1,0 +1,37 @@
+<div class="header-box">
+  <div>
+    <ng-container *ngIf="breadcrumbs.length > 0">
+      <mat-toolbar class="link-title">
+        <ng-container *ngFor="let link of url; let last = last">
+          <ng-container *ngIf="last; else separator">
+            {{ link.replaceAll('-',' ') | capitalize }}
+          </ng-container>
+          <ng-template #separator> {{ link.replaceAll('-',' ') | capitalize }} / </ng-template>
+        </ng-container>
+      </mat-toolbar>
+    </ng-container>
+
+    <ng-container *ngIf="breadcrumbs.length > 0">
+      <mat-toolbar class="breadcrumbs-box">
+        <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
+          <mat-breadcrumb-item [routerLink]="last ? null : breadcrumb.url">
+            {{ breadcrumb.label }}
+          </mat-breadcrumb-item>
+        </ng-container>
+      </mat-toolbar>
+    </ng-container>
+  </div>
+  <!-- <ng-container class="underDevelopment" *ngIf="url.includes('risk-analysis') || url.includes('change-password')"> <img style="width: 115px;" src="assets/image/images.png" alt="logo-img" /></ng-container> -->
+  <button
+    *ngIf="url.length > 1 && url[0] != 'investors'"
+    type="button"
+    (click)="back()"
+    class="link-btns"
+  >
+    {{
+      url[0] == 'shipments' && (url[1] == 'edit' || url[1] == 'create')
+        ? 'Back to Shipment List'
+        : 'Back'
+    }}
+  </button>
+</div>

@@ -1,0 +1,208 @@
+.form-box-section {
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 10px 100px;
+    min-height: calc(100vh - 200px);
+    position: relative;
+
+    .form-listbox {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        margin-right: -20px;
+        margin-bottom: -20px;
+    }
+
+    .form-field {
+        width: calc(100% - 68%);
+        padding-right: 20px;
+        padding-bottom: 20px;
+
+        &:nth-child(3n) {
+            padding-right: 0;
+        }
+
+        .col-grp {
+            width: calc(100% - 51%);
+            display: inline-block;
+            vertical-align: top;
+
+            &:not(:last-child) {
+                margin-right: 14px;
+            }
+        }
+    }
+
+    .mat-form-field {
+        width: 100%;
+    }
+
+    .btn-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        // position: absolute;
+        bottom: 40px;
+        right: 40px;
+
+        .link-btn {
+            background-color: rgba(7, 73, 146, 1);
+            color: #fff;
+            min-width: 90px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1;
+            padding: 10px 13px;
+            text-decoration: none;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+
+            &:hover {
+                border-color: rgba(7, 73, 146, 1);
+                color: rgba(7, 73, 146, 1);
+                background-color: transparent !important;
+            }
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.required{
+    color: #FF4D4F;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-form-field-flex {
+    &:hover .mat-form-field-outline-thick {
+        color: #074992;
+        /* Change as per your color requirement */
+    }
+}
+
+.phone-number-input {
+    .separate-dial-code {
+        margin: .25em 0;
+        padding-bottom: 1.34375em;
+        width: 100%;
+
+        .form-control {
+            padding: 14px 14px;
+
+            &:focus {
+                outline: 1px solid #074992;
+                border-color: #074992;
+                box-shadow: none;
+            }
+        }
+
+        .iti__flag-container {
+            height: 55px;
+        }
+    }
+
+    &.error-phone {
+        .separate-dial-code {
+            padding-bottom: 0;
+
+            .form-control {
+                border-color: #f44336;
+                outline: 1px solid #f44336;
+
+                &:focus {
+                    outline: 1px solid #f44336;
+                    border-color: #f44336;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        .custom-select {
+            border-color: #f44336;
+            outline: 1px solid #f44336;
+        }
+    }
+}
+
+.phone-error {
+    font-weight: 400;
+    line-height: 1.125;
+    font-size: 75%;
+    padding-left: 5px;
+}
+
+.company-error {
+    font-weight: 400;
+    line-height: 1.125;
+    font-size: 75%;
+    padding-left: 5px;
+    margin-top: -16px;
+    padding-bottom: 4px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+    padding-left: 5px !important;
+}
+
+.mat-form-field-disabled {
+    .mat-form-field-outline {
+        > {
+            div {
+                background-color: #e3e3e3;
+            }
+        }
+    }
+}
+
+.mat-div-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+    ::ng-deep{
+        .select-mat{
+            position: absolute;
+            width: 18%;
+            align-items: center;
+            z-index: 11111;
+            .mat-form-field-outline{
+                & >{
+                    div{
+                        border: none;
+                    }
+                }
+            }
+            .mat-select-trigger{
+                align-items: baseline;
+            }
+            .mat-form-field-flex{
+                padding: 0 0.75em 0 0.75em;
+            }
+        }
+        .mat-form-field-flex{
+            padding: 0 20px 0 90px;
+        }
+    }
+}
+
+form{
+    position: relative;
+}
+select:disabled, .form-control:disabled{
+    background-color: #e3e3e3 !important;
+}

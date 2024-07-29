@@ -1,0 +1,65 @@
+<div class="investor-div-box">
+  <div class="wrap-group">
+    <div class="wrap-group-with-select">
+      <div class="serach-group">
+        <div class="search-icon">
+          <input matInput type="search" [formControl]="searchBox" placeholder="Enter your search text" />
+        </div>
+        <button mat-raised-button color="accent" noStyle class="search-btn">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="link-btns" (click)="addNewStd()">
+        Add New Standard
+      </button>
+    </div>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort matSortDisableClear (matSortChange)="sortData($event)">
+      <!-- ID Column -->
+
+      <ng-container matColumnDef="stdName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Standard name</th>
+        <td mat-cell *matCellDef="let row">
+          <label *ngIf="editId != row._id"> {{ row?.stdName }}</label>
+          <input #commodityInput matInput *ngIf="isInputDisabled == false && editId == row._id"
+            (input)="inputValue($event)" [ngClass]="inputEditValue ? 'input-td' : 'input-td-error'" type="text"
+            [value]="row?.stdName" />
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef class="bold-header mat-header-cell">
+          Action
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="action-btn">
+
+            <mat-icon color="primary" *ngIf="editId !== row._id" class="material-symbols-outlined"
+              (click)="toggleEdit(row)">edit</mat-icon>
+
+            <mat-icon color="primary" class="material-symbols-outlined done" [ngClass]="{ disabled: !inputEditValue }"
+              *ngIf="editId == row._id" (click)="
+                updateMasterDetail(row._id, commodityInput)
+              ">done</mat-icon>
+            <mat-icon color="primary" class="material-symbols-outlined clear" (click)="toggleEdit(row._id)"
+              *ngIf="editId == row._id">clear</mat-icon>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="8">No records found!</td>
+      </tr>
+    </table>
+    <mat-paginator [length]="masterListDetailCount" [pageSize]="pageLimit" [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex" (page)="handlePageEvent($event)" aria-label="Select page of periodic elements"
+      showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

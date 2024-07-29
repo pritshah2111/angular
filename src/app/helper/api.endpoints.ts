@@ -1,0 +1,33 @@
+export const API_END_POINTS = {
+  login: 'api/auth/login',
+
+  resetPassword: 'users/resetPassword',
+  setNewPassword: 'users/set-new-password/',
+  forgotPassword: 'users/forgot-password/',
+
+  getStudentList: 'api/students/studentList',
+  getSchoolList: 'api/school/getSchoolList',
+  getAllStdList: 'api/std/getAllStdList',
+  getAllSchoolList: 'api/school/getAllSchoolList',
+  createStudent: 'api/students/createStudent',
+  getStudentDetail: 'api/students/studentDetail/',
+  updateStudent: 'api/students/updateStudent/',
+  deleteStudent: 'api/students/deleteStudent/',
+  getAllCountries: 'api/school/getAllCountryList',
+  getAllStatesByCountry: 'api/school/getAllStateListByCountry/',
+  getAllCitiesByState: 'api/school/getAllCityListByState/',
+  getAllCityList: 'api/school/getAllCityList',
+  getAllStates: 'api/school/getAllStateList',
+  createSchool: 'api/school/create',
+  getSchoolDetail: 'api/school/schoolDetail/',
+  updateSchool: 'api/school/update/',
+  deleteSchool: 'api/school/deleteSchool/',
+  getStudentsCountBySchool: 'api/admin/getStudentsCountBySchool',
+  getStudentsCountByStandard: 'api/admin/getStudentsCountByStandard',
+  dashboardDetail: 'api/admin/dashboard',
+  getStdList: 'api/std/getStdList',
+  addStd: 'api/std/createStd',
+  updateStd: 'api/std/updateStd',
+  changePassword: 'api/auth/changePassword',
+  imageUpload: 'api/file/uploadFile'
+}

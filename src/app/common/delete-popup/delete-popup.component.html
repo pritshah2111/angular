@@ -1,0 +1,9 @@
+<div class="tab-from-box">
+  <h2 *ngIf="data?.modalTitle">{{ data?.modalTitle }}</h2>
+  <h3 *ngIf="data?.modalMessage">{{ data?.modalMessage }}</h3>
+
+  <div class="btn-group">
+    <button type="button" class="link-btns" (click)="submit(true)">Yes</button>
+    <button type="button" class="link-btns" (click)="submit(false)">No</button>
+  </div>
+</div>

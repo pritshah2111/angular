@@ -1,0 +1,69 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .underDevelopment{
+    color: red;
+  }
+
+  nav {
+    padding: 8px;
+    // background-color: #eee;
+  }
+
+  .header-box{
+    background-color: #fff;
+    box-shadow: 0px 5px 5px -10px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    ::ng-deep{
+      .mat-toolbar{
+        background-color: transparent;
+        color: #fff;
+      }
+      mat-breadcrumb-item{
+        color:rgba(7,73,146,1);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+      }
+      .mat-toolbar-row, .mat-toolbar-single-row{
+        height: auto;
+        padding: 0;
+      }
+    }
+    .link-title{
+      color: #A5ADBA;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .link-btns{
+      background-color: rgba(7,73,146,1);
+      color: #fff;
+      min-width: 70px;
+      height: 40px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1;
+      padding: 10px 11px;
+      text-decoration: none;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      border: 1px solid transparent;
+
+      &:hover{
+        border-color: rgba(7,73,146,1);
+        color: rgba(7,73,146,1);
+        background-color: transparent;
+      }
+    }
+  }

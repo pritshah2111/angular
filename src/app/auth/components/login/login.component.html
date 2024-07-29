@@ -1,0 +1,81 @@
+<div class="auth-section">
+  <div class="login-container">
+    <div class="login-content">
+      <a class="login-title">
+        <img src="assets/image/logo.png" alt="logo-img" />
+      </a>
+      <mat-card>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2>Login</h2>
+          <div>
+            <mat-form-field>
+              <mat-icon matPrefix>person_outline</mat-icon>
+              <input
+                autofocus
+                type="text"
+                matInput
+                placeholder="Enter email"
+                formControlName="email"
+              />
+              <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                Please enter email
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('pattern')">
+                Please enter valid email
+              </mat-error>
+              <mat-error #email></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-icon matPrefix>lock_outline</mat-icon>
+              <input
+                [type]="hide ? 'password' : 'text'"
+                autocomplete="false"
+                matInput
+                placeholder="Enter password"
+                formControlName="password"
+              />
+              <button
+                disableRipple="true"
+                type="button"
+                class="pwd-icon-btn"
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? 'visibility_off' : 'visibility'
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="loginForm.get('password')?.hasError('required')"
+              >
+                Please enter new password
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  !loginForm.get('password')?.hasError('required') &&
+                  loginForm.controls['password'].hasError('strong_password')
+                "
+              >
+                Password must be of 8 – 15 characters and contains 1 Uppercase,
+                1 Lowercase, 1 Number and 1 Special Character
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <button
+            class="submit-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Sign In
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+  <p class="copy-text">Copyright ©{{ getYear }} School Management System</p>
+</div>

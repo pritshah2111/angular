@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+
+  <div class="shadow-paper">
+    <div class="dashboard-row">
+      <div class="column-two">
+        <div class="summary-table">
+          <h3 class="table-header">Summary</h3>
+          <div class="table-cell">
+            <span class="table-cell-title">Total No. of Active Students</span>
+            <span class="table-cell-desc">{{ dashboardSummaryData?.totalActiveStudents}}</span>
+          </div>
+          <div class="table-cell active">
+            <span class="table-cell-title">Total No. of Students</span>
+            <span class="table-cell-desc">{{ dashboardSummaryData?.totalStudents }}</span>
+          </div>
+          <div class="table-cell">
+            <span class="table-cell-title">Total No. of Standards</span>
+            <span class="table-cell-desc">{{ dashboardSummaryData?.totalStds}}</span>
+          </div>
+          <div class="table-cell active">
+            <span class="table-cell-title">Total No. of Schools</span>
+            <span class="table-cell-desc">{{ dashboardSummaryData?.totalSchools }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="column-two">
+        <div class="chart-wrapper">
+          <h2 class="chart-title">Student - School Data</h2>
+          <div class="chart-content">
+            <app-risk-distribution-chart
+              [selectedInvestorCompanyId]="selectedInvestorCompanyId"></app-risk-distribution-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shadow-paper">
+    <!-- <div class="dashboard-row"> -->
+    <div class="column-two">
+      <div class="chart-wrapper">
+        <h2 class="chart-title">Student - Standard Data</h2>
+        <div class="chart-content">
+          <app-forward-liquidity-chart
+            [selectedInvestorCompanyId]="selectedInvestorCompanyId"></app-forward-liquidity-chart>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+</div>

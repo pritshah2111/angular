@@ -1,0 +1,212 @@
+// Width css ...
+.min-h100vh {
+    min-height: 100vh;
+}
+
+@mixin width-class($size, $imp) {
+    @if ($imp ==true) {
+        .w#{$size}-imp {
+            width: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .w#{$size} {
+            width: $size * 1px;
+        }
+    }
+}
+
+@mixin max-width($size, $imp) {
+    @if ($imp ==true) {
+        .max-w#{$size}-imp {
+            max-width: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .max-w#{$size} {
+            max-width: $size * 1px;
+        }
+    }
+}
+
+@mixin min-width($size, $imp) {
+    @if ($imp ==true) {
+        .min-w#{$size}-imp {
+            min-width: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .min-w#{$size} {
+            min-width: $size * 1px;
+        }
+    }
+}
+
+@mixin widthList($list) {
+    @each $size in $list {
+        @include width-class($size, false);
+    }
+}
+
+@mixin widthImpList($list) {
+    @each $size in $list {
+        @include width-class($size, true);
+    }
+}
+
+@mixin minWidthList($list) {
+    @each $size in $list {
+        @include min-width($size, false);
+    }
+}
+
+@mixin minWidthImpList($list) {
+    @each $size in $list {
+        @include min-width($size, true);
+    }
+}
+
+@mixin maxWidthList($list) {
+    @each $size in $list {
+        @include max-width($size, false);
+    }
+}
+
+@mixin maxWidthImpList($list) {
+    @each $size in $list {
+        @include max-width($size, true);
+    }
+}
+
+/*
+    Example class ====> w1100 <====
+    Example class ====> min-w1100 <====
+    Example class ====> max-w1100 <====
+    Example class ====> w1100-imp <====
+    Example class ====> min-w1100-imp <====
+    Example class ====> max-w1100-imp <====
+  */
+
+/* Add you width size in bellow list
+@include widthImpList([ 150, 600, 1300]); */
+
+
+// Add you min-width size in bellow list
+@include widthList([20,100, 150, 200, 300, 600]);
+@include minWidthImpList([20,100, 150, 200, 300, 600, 800, 1200, 1400, 1800, 2000, 2200, 2400]);
+@include minWidthList([20,100, 150, 200, 300, 600]);
+@include maxWidthList([20,100, 150, 200, 300, 600]);
+@include maxWidthImpList([20,100, 150, 200, 300, 600, 780, 510]);
+
+/* Add you max-width size in bellow list
+  @include maxWidthList([1300]);
+  @include maxWidthImpList([1300]); */
+
+// ... Width css
+
+// Height css ...
+@mixin height-class($size) {
+    @if ($imp ==true) {
+        .h#{$size}-imp {
+            height: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .h#{$size} {
+            height: $size * 1px;
+        }
+    }
+}
+
+@mixin max-height-class($size, $imp) {
+    @if ($imp ==true) {
+        .max-h#{$size}-imp {
+            max-height: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .max-h#{$size} {
+            max-height: $size * 1px;
+        }
+    }
+}
+
+@mixin min-height($size, $imp) {
+    @if ($imp ==true) {
+        .min-h#{$size}-imp {
+            min-height: $size * 1px !important;
+        }
+    }
+
+    @else {
+        .min-h#{$size} {
+            min-height: $size * 1px;
+        }
+    }
+}
+
+@mixin heightList($list) {
+    @each $size in $list {
+        @include height-class($size, false);
+    }
+}
+
+@mixin heightImpList($list) {
+    @each $size in $list {
+        @include height-class($size, true);
+    }
+}
+
+@mixin minHeigHtList($list) {
+    @each $size in $list {
+        @include min-height($size, false);
+    }
+}
+
+@mixin minHeigHtImpList($list) {
+    @each $size in $list {
+        @include min-height($size, true);
+    }
+}
+
+@mixin maxHeightList($list) {
+    @each $size in $list {
+        @include max-height($size, false);
+    }
+}
+
+@mixin maxHeightImpList($list) {
+    @each $size in $list {
+        @include max-height($size, true);
+    }
+}
+
+/*
+    Example class ====> h1100 <====
+    Example class ====> min-h1100 <====
+    Example class ====> max-h1100 <====
+    Example class ====> h1100-imp <====
+    Example class ====> min-h1100-imp <====
+    Example class ====> max-h1100-imp <====
+  */
+
+/* Add you height size in bellow list
+  @include heightList([ 150, 600, 1300]);
+  @include heightImpList([ 150, 600, 1300]); */
+
+
+/* Add you min-height size in bellow list
+  @include minHeigHtImpList([150]);
+  @include minHeigHtList([ 600, 1300]); */
+
+
+/* Add you max-height size in bellow list
+  @include maxHeightList([1300]);
+  @include maxHeightImpList([1300]); */
+
+// Height css

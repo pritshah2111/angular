@@ -1,0 +1,119 @@
+@use "@angular/material" as mat;
+
+@import "./assets/styles/table.scss";
+@import "./assets/styles/search.scss";
+@import "./assets/styles/form.scss";
+
+@import "./assets/styles/common";
+@import "./assets/styles/height-width";
+@import "./assets/styles/mixin";
+@import "./assets/styles/variable";
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+
+// Include non-theme styles for core.
+@include mat.core();
+
+$IHC-pallete: (
+  50: #ffffea,
+  100: #fffbc8,
+  200: #fff7a2,
+  300: #5385BC,
+  400: #2D67A7,
+  500: #074992,
+  600: #063A75,
+  700: #042C58,
+  800: #ffb53f,
+  900: #FFA02F,
+  A100: #FFA02F,
+  A200: #FFA02F,
+  A400: #FFA02F,
+  A700: #FFA02F,
+  // 900: #ff8d31,
+  // A100: #ff8d31,
+  // A200: #ff8d31,
+  // A400: #ff8d31,
+  // A700: #ff8d31,
+  contrast: (50: #f7f7f7,
+    100: #eeeeee,
+    200: #e3e3e3,
+    300: #d1d1d1,
+    400: #acacac,
+    500: #fff,
+    600: #646464,
+    700: #515151,
+    800: #333333,
+    900: #ffffff,
+  ),
+);
+
+// Define a theme.
+$primary-color: mat.define-palette($IHC-pallete, 500);
+$accent-color: mat.define-palette($IHC-pallete, 500);
+
+// $nb-typography: mat.define-typography-config(
+//   $font-family: "'Fira Sans', sans-serif",
+// );
+
+$IHC-theme: mat.define-light-theme((color: (primary: $primary-color,
+        accent: $accent-color,
+      ),
+      // typography: $IHC-typography,
+    ));
+
+@include mat.all-component-themes($IHC-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+//html, body { font-family: 'Fira Sans'; }
+body {
+  margin: 0;
+  background-color: #7A869A;
+}
+
+a,
+button {
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+
+button {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(7, 73, 146, 0.8);
+  }
+}
+
+.mat-menu-item:hover:not([disabled]) {
+  background-color: rgba(7, 73, 146, 0.8);
+}
+
+h2 {
+  color: #074992 !important;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.mat-form-field-infix {
+  min-width: 50px !important;
+}
+
+.mat-slide-toggle-bar:hover .mat-slide-toggle-persistent-ripple,
+.mat-chip-ripple {
+  opacity: 0 !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

@@ -1,0 +1,157 @@
+<div class="form-box-section">
+  <form [formGroup]="studentAddForm" (ngSubmit)="submit()">
+    <div class="form-listbox">
+      <div class="form-field">
+        <mat-label>Student First Name<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="firstName" placeholder="Enter student first name" />
+          <mat-error *ngIf="
+              submitted && studentAddForm.get('firstName')?.hasError('required')
+            ">
+            Student first name is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              studentAddForm.get('firstName')?.hasError('pattern') &&
+              !studentAddForm.get('firstName')?.hasError('required') &&
+              !studentAddForm.get('firstName')?.hasError('onlyWhitespace')
+            ">
+            Enter valid first name
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              !studentAddForm.get('firstName')?.hasError('required') &&
+              studentAddForm.get('firstName')?.hasError('onlyWhitespace')
+            ">
+            No white space allow in first name
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-label>Student Last Name<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="lastName" placeholder="Enter student last name" />
+          <mat-error *ngIf="
+              submitted && studentAddForm.get('lastName')?.hasError('required')
+            ">
+            Student last name is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              studentAddForm.get('lastName')?.hasError('pattern') &&
+              !studentAddForm.get('lastName')?.hasError('required') &&
+              !studentAddForm.get('lastName')?.hasError('onlyWhitespace')
+            ">
+            Enter valid last name
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              !studentAddForm.get('lastName')?.hasError('required') &&
+              studentAddForm.get('lastName')?.hasError('onlyWhitespace')
+            ">
+            No white space allow in last name
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-label>School<span class="required">*</span></mat-label>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <mat-form-field class="select-mat" appearance="outline">
+            <mat-select formControlName="schoolId" placeholder="--Select school--" [disabled]="showCompany">
+              <mat-option *ngFor="let school of allSchoolArray" [value]="school._id">{{ school.schoolName
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-error class="company-error" *ngIf="
+            submitted && studentAddForm.get('schoolId')?.hasError('required')
+          ">
+          School name is required
+        </mat-error>
+      </div>
+      <div class="form-field">
+        <mat-label>Standard<span class="required">*</span></mat-label>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <mat-form-field class="select-mat" appearance="outline">
+            <mat-select formControlName="stdId" placeholder="--Select standard--" [disabled]="showCompany">
+              <mat-option *ngFor="let standard of allStdArray" [value]="standard._id">{{ standard.stdName
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-error class="company-error" *ngIf="
+            submitted && studentAddForm.get('stdId')?.hasError('required')
+          ">
+          Standard is required
+        </mat-error>
+      </div>
+      <div class="form-field">
+        <mat-label>Phone Number<span class="required">*</span></mat-label>
+        <ngx-intl-tel-input [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true"
+          [selectFirstCountry]="false" [selectedCountryISO]="studentAddForm.get('countryCode')?.value"
+          [separateDialCode]="true" [maxLength]="15" [phoneValidation]="true" class="phone-number-input" [ngClass]="
+            submitted && studentAddForm.controls['parentNumber'].errors
+              ? 'error-phone'
+              : ''
+          " formControlName="parentNumber"></ngx-intl-tel-input>
+        <div *ngIf="submitted">
+          <mat-error class="phone-error" *ngIf="
+              studentAddForm.get('parentNumber')?.hasError('required') ||
+              studentAddForm.get('parentNumber')?.hasError('emptySpace')
+            ">Phone number is required</mat-error>
+          <mat-error class="phone-error" *ngIf="
+              !studentAddForm.get('parentNumber')?.hasError('required') &&
+              !studentAddForm.get('parentNumber')?.hasError('emptySpace') &&
+              studentAddForm.get('parentNumber')?.hasError('validatePhoneNumber')
+            ">
+            Invalid number for the selected country</mat-error>
+        </div>
+      </div>
+      <div class="form-field">
+        <mat-label>Email Address<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter email address" formControlName="email" appWhiteSpaceRestriction />
+          <mat-error *ngIf="submitted && studentAddForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="
+              submitted &&
+              studentAddForm.get('email')?.hasError('pattern') &&
+              !studentAddForm.get('email')?.hasError('required')
+            ">
+            Enter Valid email
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-label>Date of Birth<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="dobPicker" placeholder="Enter date of birth" formControlName="dob"
+            [max]="maxDob">
+          <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobPicker></mat-datepicker>
+          <mat-error *ngIf="submitted && studentAddForm.get('dob')?.hasError('required')">Date of Birth is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-label>Address<span class="required">*</span></mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter address" formControlName="address" appWhiteSpaceRestriction />
+          <mat-error *ngIf="
+              submitted && studentAddForm.get('address')?.hasError('required')
+            ">
+            Address is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="btn-box">
+      <button type="submit" class="link-btn">Save</button>
+      <button type="button" class="link-btn" [routerLink]="'/students'">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

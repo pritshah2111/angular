@@ -1,0 +1,118 @@
+.mat-table .action-btn {
+    justify-content: center !important;
+}
+
+.mat-header-cell {
+    color: #000 !important;
+    font-weight: bold;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.wrap-group-with-select {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+.mat-table .action-btn {
+    justify-content: center !important;
+}
+
+.wrap-group-with-select {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-field {
+    &.commodity-select {
+        max-width: 400px;
+        width: 100%;
+        min-width: 300px;
+
+        ::ng-deep {
+            .mat-form-field-wrapper {
+                padding: 0;
+                margin: 0;
+
+                .mat-form-field-infix {
+                    width: 100%;
+                    padding: 0.5em 0;
+
+                }
+            }
+        }
+    }
+}
+
+.input-td {
+    box-sizing: border-box;
+    border: 2px solid #074992;
+    width: 100%;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    &:focus-visible {
+        border-color: #074992;
+    }
+
+    &:disabled {
+        background-color: transparent;
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+    /* Adjust the styles as needed */
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+
+.input-td-error {
+    border: 2px solid #b33111;
+    width: 100%;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    &:focus-visible {
+        border-color: #bd3b14;
+    }
+
+    &:disabled {
+        background-color: transparent;
+    }
+}
+
+.clear {
+    background-color: #E95444;
+    color: #fff;
+    border-color: #E95444 !important;
+}
+
+.done {
+    background-color: #44E954;
+    border-color: #44E954 !important;
+    color: #fff;
+}
+
+
+.mat-header-cell {
+    color: #000 !important;
+    font-weight: bold;
+    justify-content: center !important;
+    text-align: center !important;
+}

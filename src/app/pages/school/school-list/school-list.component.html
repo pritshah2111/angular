@@ -1,0 +1,117 @@
+<div class="investor-div-box">
+  <div class="wrap-group">
+    <div class="wrap-group-with-select">
+      <div class="serach-group">
+        <div class="search-icon">
+          <input matInput type="search" [formControl]="searchBox" placeholder="Enter your search text" />
+        </div>
+        <button mat-raised-button color="accent" noStyle class="search-btn">
+          <mat-icon (click)="searchBox.reset()">search</mat-icon>
+        </button>
+      </div>
+
+      <div class="form-field commodity-select">
+        <form [formGroup]="addSchoolForm" (ngSubmit)="commoditySectorFilterSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Select city" formControlName="commodity_sector"
+              (selectionChange)="onCommoditySelectionChange($event)">
+              <cdk-virtual-scroll-viewport itemSize="5" class="example-viewport" [style.height.px]=5*48>
+                <ng-container *cdkVirtualFor="let city of allCityArray">
+                  <mat-option [value]="city._id">{{ city.name }}</mat-option>
+                </ng-container>
+              </cdk-virtual-scroll-viewport>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button [routerLink]="'/schools/create'" class="link-btns">
+        Add New School
+      </button>
+    </div>
+  </div>
+  <div class="mat-table-responsive">
+    <table class="min-w1800-imp" mat-table [dataSource]="dataSource" matSort matSortDisableClear
+      (matSortChange)="sortData($event)">
+      <!-- ID Column -->
+      <ng-container matColumnDef="schoolName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="w150">
+          School Name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.schoolName }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="min-w150">
+          Email Address
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.userDetail.email }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="w150">
+          City
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.city }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="w150">
+          State
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.state }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="w150">
+          Country
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.country }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="zipcode">
+        <th mat-header-cell *matHeaderCellDef class="min-w150">
+          Zipcode
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.zipCode }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef class="bold-header mat-header-cell" class="w150">
+          Action
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="action-btn">
+            <mat-icon color="primary" class="material-symbols-outlined"
+              [routerLink]="'/schools/view/' + row._id">visibility</mat-icon>
+            <mat-icon color="primary" class="material-symbols-outlined"
+              [routerLink]="'/schools/edit/' + row._id">edit</mat-icon>
+            <mat-icon color="primary" class="material-symbols-outlined"
+              (click)="deleteInvestorDetail(row._id)">delete</mat-icon>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="13">No records found!</td>
+      </tr>
+    </table>
+
+    <mat-paginator [length]="masterListDetailCount" [pageSize]="pageLimit" [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex" (page)="handlePageEvent($event)" aria-label="Select page of periodic elements"
+      showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+.shadow-paper {
+    background: #ffffff;
+    box-shadow: 0px 5px 5px -10px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    width: 100%;
+
+    &.sticky {
+        position: sticky;
+        z-index: 99;
+    }
+
+    &.p-0 {
+        padding: 0;
+    }
+
+    &.padd-7-16 {
+        padding: 7px 16px;
+    }
+
+    &.padd-16-28 {
+        padding: 16px 28px;
+    }
+
+    +.shadow-paper {
+        margin-top: 16px;
+    }
+
+    &.vh-100-144 {
+        height: calc(100vh - 82px);
+    }
+
+    &.alert-sticky-sider {
+        position: sticky;
+        top: 88px;
+    }
+}
+
+// highcharts-chart {
+//     display: block;
+//     width: auto;
+//     height: auto;
+//     overflow: auto hidden !important;
+// }
+
+ngx-material-timepicker-container {
+    .timepicker-overlay {
+        z-index: 9999 !important;
+    }
+}

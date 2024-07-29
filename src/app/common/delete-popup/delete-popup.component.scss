@@ -1,0 +1,53 @@
+.btn-group{
+    align-items: center;
+    justify-content: end;
+}
+.tab-from-box{
+    text-align: center;
+}
+
+.link-btns{
+    background-color: rgba(7,73,146,1);
+    color: #fff;
+    min-width: 80px;
+    height: 40px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    padding: 10px 13px;
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: 1px solid transparent;
+
+    &:hover{
+      border-color: #074992;
+      color: #074992;
+      background-color: transparent;
+    }
+    &:not(:last-child){
+        margin-right: 10px;
+    }
+}
+
+.close-btn{
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    display: block;
+    font-size: 20px;
+    &:hover{
+    border-color: transparent;
+    color: #000;
+    background-color: transparent !important;
+    }
+    &:focus-visible{
+        outline: none;
+    }
+}

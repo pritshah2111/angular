@@ -1,0 +1,14 @@
+<app-header class="fix-header"></app-header>
+<mat-sidenav-container autosize [hasBackdrop]="false">
+  <mat-sidenav mode="side" disableClose [opened]="true" id="sidebar-container">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="app-content">
+      <div class="content-body">
+        <app-breadcrumb></app-breadcrumb>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

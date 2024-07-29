@@ -1,0 +1,24 @@
+<div class="sidebar-main">
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [routerLink]="node.route"
+      [routerLinkActive]="'mat-active'" (click)="storeName(node)">
+      <mat-icon [matTooltip]="!isExpanded ? node.name : ''" [matTooltipPosition]="'left'">{{ node.icon }}</mat-icon>
+      <span *ngIf="isExpanded" class="menu-item">{{ node.name }}</span>
+    </mat-tree-node>
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <div class="mat-tree-node" matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+        <mat-icon [matTooltip]="!isExpanded ? node.name : ''" [matTooltipPosition]="'left'">{{ node.icon }}</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">{{ node.name }}</span>
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+        </mat-icon>
+      </div>
+      <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group" class="tre-outlet-content">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </div>
+    </mat-nested-tree-node>
+  </mat-tree>
+  <button mat-icon-button class="expanded-btn" (click)="toggleExpanded()">
+    <mat-icon class="chevron-button" [ngClass]="{ rotated: !isExpanded }">chevron_left</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,143 @@
+.sidebar-main {
+  ::ng-deep {
+    .mat-tree {
+      padding: 8px;
+      overflow: hidden;
+      overflow-y: auto;
+      height: calc(100vh - 130px);
+
+      .mat-icon {
+        min-width: 24px;
+        display: flex;
+        align-items: center;
+
+        text-align: center;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      .mat-tree-node {
+        border-radius: 4px;
+        padding: 0 12px;
+        margin-bottom: 1px;
+        cursor: pointer;
+
+        &:hover,
+        &.mat-active {
+          background: rgba(0, 0, 0, 0.13);
+          // color: #fff;
+        }
+      }
+
+      .menu-item {
+        margin: 0 auto 0 10px;
+        padding: 14px 0;
+        width: 100%;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    .mat-sidenav-container {
+      width: 100%;
+      height: calc(100vh - 70px);
+
+      .chevron-button {
+        transition: 300ms ease-in-out;
+        transform: rotate(180deg);
+      }
+
+      .chevron-button.rotated {
+        transform: rotate(0deg);
+      }
+
+      .mat-drawer-side,
+      .mat-drawer-inner-container {
+        overflow: visible;
+      }
+    }
+
+    .mat-nested-tree-node {
+      position: relative;
+    }
+  }
+
+  .rotated {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+
+  .expanded-btn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: transparent !important;
+    border-radius: 0;
+
+    .material-icons {
+      font-size: 24px;
+      transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -ms-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+  }
+
+  .explanded {
+    .mat-icon-rtl-mirror {
+      display: none;
+    }
+
+    .tre-outlet-content {
+      position: absolute;
+      left: 57px;
+      top: 48px;
+      background: #ffffff;
+      box-shadow: 4px 0px 4px 1px rgba(0, 0, 0, 0.15);
+      padding: 8px !important;
+    }
+  }
+
+  .content-body {
+    height: 100%;
+  }
+
+  .app-content {
+    padding: 16px;
+    min-height: calc(100% - 64px);
+  }
+
+  .example-tree-invisible {
+    display: none;
+  }
+
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  .example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 0;
+  }
+
+  .example-tree div[role=group]>.mat-tree-node {
+    padding-left: 20px;
+  }
+}
+
+::ng-deep {
+  .mat-drawer {
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+  }
+}

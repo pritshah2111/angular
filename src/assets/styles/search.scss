@@ -1,0 +1,115 @@
+.wrap-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0px 5px 5px -10px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    padding: 20px 20px;
+    margin-bottom: 10px;
+    button:not([noStyle]) {
+      background-color: transparent;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  
+    .serach-group {
+      display: flex;
+  
+      .search-icon {
+        // height: 100%;
+  
+        input {
+          height: 100%;
+        }
+      }
+  
+      .search-btn {
+        min-width: auto;
+        min-height: 36px;
+        box-shadow: none;
+        border-radius: 0 4px 4px 0;
+        -webkit-border-radius: 0 4px 4px 0;
+        -moz-border-radius: 0 4px 4px 0;
+        -ms-border-radius: 0 4px 4px 0;
+        -o-border-radius: 0 4px 4px 0;
+    }
+  
+      .mat-input-element {
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        padding: 6px 13px;
+        border-radius: 4px;
+        min-width: 284px;
+        background-color: #fff;
+        box-sizing: border-box;
+        margin: 0 -4px 0 0;
+  
+        &:focus {
+          border: 1px solid #074992;
+        }
+      }
+    }
+  
+    .date-group {
+      margin: 0 12px;
+    }
+  
+    .download-group {
+      border-left: 1px solid rgba(0, 0, 0, 0.12);
+      padding-left: 12px;
+      margin-left: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-group{
+        display: flex;
+        align-items: center;
+    }
+
+    .link-btns{
+        background-color: rgba(7,73,146,1) !important;
+        color: #fff !important;
+        min-width: 70px;
+        height: 40px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1;
+        padding: 10px 13px;
+        text-decoration: none;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        border: 1px solid transparent;
+
+        &:hover{
+          border-color: #074992 !important;
+          color: #074992 !important;
+          background-color: transparent !important;
+        }
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+  }
+}
+
+.mat-menu-content {
+  padding: 0 !important;
+  .mat-menu-item{
+    &:hover{
+      span , .material-icons{
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+.table-menu{
+  .mat-menu-item{
+    line-height: 33px;
+    height: 33px;
+  }
+}
